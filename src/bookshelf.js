@@ -1,5 +1,3 @@
-import React, { Component } from React;
-
 class Bookshelf extends React.Component {
     constructor(props) {
         super(props);

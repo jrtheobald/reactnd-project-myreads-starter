@@ -1,4 +1,3 @@
-import React, { Component } from React;
 import { getAll } from "./BooksAPI";
 
 class Book extends React.Component {
