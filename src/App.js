@@ -4,6 +4,7 @@ import './App.css'
 import Bookcase from './bookcase.js'
 
 class BooksApp extends React.Component {
+  
   state = {
     /**
      * TODO: Instead of using this state variable to keep track of which page
@@ -19,10 +20,12 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then((books) => {
       this.setState({books: books})
     })
+
+    console.log(this);
   }
 
   render() {
-    console.log(this.state.books[0])
+    console.log(this.state.books)
     return (
        <div className="app">
          {this.state.showSearchPage ? (
@@ -47,7 +50,8 @@ class BooksApp extends React.Component {
           </div>
         </div>
         ) : (
-          <Bookcase />
+          // The component did mount and has an array
+          <Bookcase someBooks={this.state.books}/>
         )}
       </div>
     )
