@@ -1,7 +1,9 @@
 import React from 'react'
+import {Route} from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import Bookcase from './bookcase.js'
+import Search from './search.js'
 
 class BooksApp extends React.Component {
   
@@ -12,7 +14,7 @@ class BooksApp extends React.Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    showSearchPage: false,
+    query: '',
     books: []
   }
 
@@ -24,37 +26,23 @@ class BooksApp extends React.Component {
     console.log(this);
   }
 
+  goToSearch = () => {this.setState({
+    page: './search'
+  })}
+
   render() {
     console.log(this.state.books)
     return (
-       <div className="app">
-         {this.state.showSearchPage ? (
-          <div className="search-books">
-          <div className="search-books-bar">
-            <link to="/" className="close-search">Close</link>
-            <div className="search-books-input-wrapper">
-              {/*
-                NOTES: The search from BooksAPI is limited to a particular set of search terms.
-                You can find these search terms here:
-                https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
+      <div className="app">
+        <Route exact path="/search" component={Search} />
 
-                However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-                you don't find a specific author or title. Every search is limited by search terms.
-              */}
-              <input type="text" placeholder="Search by title or author"/>
-
-            </div>
-          </div>
-          <div className="search-books-results">
-            <ol className="books-grid"></ol>
-          </div>
+        <Route exact path="/" render={
+          () => (
+            <Bookcase someBooks={this.state.books} />
+          )
+        } />
         </div>
-        ) : (
-          // The component did mount and has an array
-          <Bookcase someBooks={this.state.books}/>
-        )}
-      </div>
-    )
+    );
   }
 }
 

@@ -1,10 +1,14 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import Bookshelf from './bookshelf.js'
 
 class Bookcase extends React.Component {
     componentDidMount() {
         console.log(this);
     }
+
+    
+
     render() {
         // console.log()
         return (
@@ -26,7 +30,9 @@ class Bookcase extends React.Component {
               </div>
             </div>
             <div className="open-search">
-              <link to="/search">Add a book</link>
+              <Link to="/search">
+              Add a book
+              </Link>
             </div>
           </div>
         );
