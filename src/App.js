@@ -26,10 +26,6 @@ class BooksApp extends React.Component {
     console.log(this);
   }
 
-  goToSearch = () => {this.setState({
-    page: './search'
-  })}
-
   render() {
     console.log(this.state.books)
     return (
