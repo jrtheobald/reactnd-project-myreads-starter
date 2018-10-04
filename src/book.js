@@ -4,6 +4,9 @@ class Book extends React.Component {
   componentDidMount() {
     console.log(this);
   }
+
+  
+
     render() {
         return (
           <li>
@@ -15,12 +18,14 @@ class Book extends React.Component {
                   backgroundImage: `url("${this.props.book.imageLinks.thumbnail}")` }}>
                 </div>
                 <div className="book-shelf-changer">
-                  <select onChange={(event) => {this.props.book.shelf = event.target.value}}>
+                  <select value={this.props.book.shelf}
+                          onChange={(event) => {
+                            this.props.updateShelf(this.props.book, event.target.value)}}>
                     <option value="move" disabled>Move to...</option>
                     <option value="currentlyReading">Currently Reading</option>
                     <option value="wantToRead">Want to Read</option>
                     <option value="read">Read</option>
-                    <option value="none">None</option>
+                    <option value="none" disabled>None</option>
                   </select>
                 </div>
               </div>
