@@ -8,14 +8,9 @@ import Search from './search.js'
 class BooksApp extends React.Component {
   
   state = {
-    /**
-     * TODO: Instead of using this state variable to keep track of which page
-     * we're on, use the URL in the browser's address bar. This will ensure that
-     * users can use the browser's back and forward buttons to navigate between
-     * pages, as well as provide a good URL they can bookmark and share.
-     */
     query: '',
-    books: []
+    books: [],
+    matchbooks: []
   }
 
   componentDidMount() {
@@ -26,7 +21,7 @@ class BooksApp extends React.Component {
     console.log(this);
   }
 
-  updateShelf = (book,shelf) => {
+  changeBookshelf = (book,shelf) => {
     BooksAPI.update(book, shelf).then(() => {
       BooksAPI.getAll().then((books) => {
         this.setState({books:books})
@@ -34,16 +29,30 @@ class BooksApp extends React.Component {
     })
   }
   
+  bookSearch = (query) => {
+    BooksAPI.search(query).then(() => {
+      this.setState({matchbooks: matchBooks})
+    })
+  }
+
   render() {
     console.log(this.state.books)
     return (
       <div className="app">
-        <Route exact path="/search" component={Search} />
+        <Route exact path="/search" render={
+          () => (
+            <Search someBooks={this.state.books}
+                    moveBook={this.changeBookshelf}
+                    matchBooks={this.state.matchbooks}
+                    query={this.state.query}
+                    aSearch={this.bookSearch} />
+          )
+        } />
 
         <Route exact path="/"  render={
           () => (
-            <Bookcase someBooks={this.state.books} test={this.myTest}
-                      updateShelf={this.updateShelf} />
+            <Bookcase someBooks={this.state.books}
+                      moveBook={this.changeBookshelf} />
           )
         } />
         </div>

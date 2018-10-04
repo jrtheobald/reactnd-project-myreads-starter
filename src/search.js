@@ -14,11 +14,20 @@ class Search extends React.Component {
                 Close
             </Link>
             <div className="search-books-input-wrapper">
-              <input type="text" placeholder="Search by title or author"/>
+              <input
+                value={this.props.query}
+                onChange={(event) => {aSearch(this.value)}}
+                type="text"
+                placeholder="Search by title or author"/>
             </div>
           </div>
           <div className="search-books-results">
-            <ol className="books-grid"></ol>
+            <ol className="books-grid">
+                {
+                    this.props.matchBooks.map((book, key) => <Book
+                        book={book} key={book.id} newShelf={this.props.bookMoves}/>)
+                }
+            </ol>
           </div>
         </div>
         );

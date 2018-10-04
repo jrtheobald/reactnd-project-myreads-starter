@@ -19,15 +19,15 @@ class Bookcase extends React.Component {
             <div className="list-books-content">
               <div>
                 <Bookshelf
-                    updateShelf={this.props.updateShelf}
+                    bookMoves={this.props.moveBook}
                     name='Currently Reading'
                     aFewBooks={this.props.someBooks.filter(book => book.shelf === 'currentlyReading')}/>
                 <Bookshelf
-                    updateShelf={this.props.updateShelf}
+                    bookMoves={this.props.moveBook}
                     name='Want to Read'
                     aFewBooks={this.props.someBooks.filter(book => book.shelf === 'wantToRead')}/>
                 <Bookshelf
-                    updateShelf={this.props.updateShelf}
+                    bookMoves={this.props.moveBook}
                     name='Read'
                     aFewBooks={this.props.someBooks.filter(book => book.shelf === 'read')}/>
               </div>
