@@ -40,8 +40,12 @@ class BooksApp extends React.Component {
     })
   }
 
+  resetQuery = () => {
+    this.setState({query: ""})
+  }
+
   render() {
-    console.log(this.state.books)
+    console.log(this.state.books);
     return (
       <div className="app">
         <Route exact path="/search" render={
@@ -55,10 +59,11 @@ class BooksApp extends React.Component {
           )
         } />
 
-        <Route exact path="/"  render={
+        <Route exact path="/" render={
           () => (
             <Bookcase someBooks={this.state.books}
-                      moveBook={this.changeBookshelf} />
+                      moveBook={this.changeBookshelf}
+                      resetQuery={this.resetQuery} />
           )
         } />
         </div>

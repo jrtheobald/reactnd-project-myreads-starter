@@ -19,7 +19,7 @@ class Search extends React.Component {
                 value={this.props.query}
                 onChange={(event) => {
                     this.props.updateQuery(event.target.value);
-                    this.props.bookSearch(event.target.value)
+                    this.props.bookSearch(event.target.value.trim())
                 }}
                 type="text"
                 placeholder="Search by title or author"/>

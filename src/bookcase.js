@@ -7,10 +7,7 @@ class Bookcase extends React.Component {
         console.log(this);
     }
 
-    
-
     render() {
-        // console.log()
         return (
             <div className="list-books">
             <div className="list-books-title">
