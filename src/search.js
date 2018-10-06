@@ -17,7 +17,10 @@ class Search extends React.Component {
             <div className="search-books-input-wrapper">
               <input
                 value={this.props.query}
-                onChange={(event) => {this.props.updateQuery(event.target.value)}}
+                onChange={(event) => {
+                    this.props.updateQuery(event.target.value);
+                    this.props.bookSearch(event.target.value)
+                }}
                 type="text"
                 placeholder="Search by title or author"/>
             </div>

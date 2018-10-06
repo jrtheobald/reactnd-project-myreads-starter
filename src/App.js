@@ -29,13 +29,16 @@ class BooksApp extends React.Component {
     })
   }
   
-
-
   updateQuery = (query) => {
     this.setState({query: query})
   }
 
-
+  bookSearch = (query) => {
+    BooksAPI.search(query).then((response) => {
+      console.log(response)
+      this.setState({matchbooks: response})
+    })
+  }
 
   render() {
     console.log(this.state.books)
@@ -45,7 +48,7 @@ class BooksApp extends React.Component {
           () => (
             <Search someBooks={this.state.books}
                     moveBook={this.changeBookshelf}
-                    matchBooks={this.state.books}
+                    matchBooks={this.state.matchbooks}
                     query={this.state.query}
                     updateQuery={this.updateQuery}
                     bookSearch={this.bookSearch} />
