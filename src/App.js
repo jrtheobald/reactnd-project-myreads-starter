@@ -37,6 +37,8 @@ class BooksApp extends React.Component {
     BooksAPI.search(query).then((response) => {
       console.log(response)
       this.setState({matchbooks: response})
+    }).catch(error => {
+      this.setState({matchbooks: ''})
     })
   }
 

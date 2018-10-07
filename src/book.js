@@ -16,7 +16,7 @@ class Book extends React.Component {
                   backgroundImage: this.props.book.imageLinks ? `url("${this.props.book.imageLinks.thumbnail}")` : ""}}>
                 </div>
                 <div className="book-shelf-changer">
-                  <select value={this.props.book.shelf}
+                  <select value={(this.props.book && this.props.book.shelf || "none")}
                           onChange={(event) => {
                             this.props.newShelf(this.props.book, event.target.value)}}>
                     <option value="move" disabled>Move to...</option>
