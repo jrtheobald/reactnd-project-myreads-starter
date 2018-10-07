@@ -42,7 +42,9 @@ class BooksApp extends React.Component {
     })
   }
 
+  // TODO: Figure out how to make this work at some point.
   resetQuery = () => {
+    // To clear old, previous queries when leaving search
     this.setState({query: ""})
   }
 
